@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Portfolio Machine</title>
+    <meta name='description' content=''>
+
+    <meta name='keywords' content=''>
+    <meta name='author' content='Interaction Design (CMSI21)'>
+    <meta name='Language' content='ENG'>
+
+    <link href='style.css' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+    <main>
+        <!-- INITIAL SCREEN -->
+        <section id="screen01">
+            <div id="title_area">
+                <div>
+                    <h1>PORTFOLIO MACHINE</h1>
+                    <div class="button_square secondary_typo" onclick="OpenExplanation();">Show Explanation</div>
+                </div>
+                <div>
+                    <h2>SPOTLIGHT THE MAJORS</h2>
+                    <br>
+                    <div class="majors_buttons" id="CD" onclick="ClickCD();">
+                        <div class="triangle"></div>
+                        <div id="CD_button" class="major_button"></div>
+                        <h3>Communication</h3>
+                    </div>
+                    <div class="majors_buttons" id="MD" onclick="ClickMD();">
+                        <div class="triangle"></div>
+                        <div id="MD_button" class="major_button"></div>
+                        <h3>Media</h3>
+                    </div>
+                    <div class="majors_buttons" id="SD" onclick="ClickSD();">
+                        <div class="triangle"></div>
+                        <div id="SD_button" class="major_button"></div>
+                        <h3>Sound</h3>
+                    </div>
+                    <div class="majors_buttons" id="ID" onclick="ClickID();">
+                        <div class="triangle"></div>
+                        <div id="ID_button" class="major_button"></div>
+                        <h3>Interaction</h3>
+                    </div>
+                </div>
+            </div>
+            <section id="periodic_table">
+                <img src="img/fabry_main.png">
+            </section>
+        </section>
+
+        <!-- PROFILE SCREEN -->
+        <section id="screen02">
+            <div class="arrows">
+                <div class="prev">
+                    <div>
+                        <img class="icon" src="img/icons/icon_3.svg"> Prev
+                    </div>
+                </div>
+                <div class="next">
+                    <div>
+                        Next <img class="icon" src="img/icons/icon_4.svg">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div>
+                    <div class="two_columns_specific">
+                        <div id="person_profile_picture"></div>
+                        <div class="person_content">
+                            <h2 id="person_name"></h2>
+                            <h3 id="person_major"></h3>
+                            <div id="person_tags"></div>
+                        </div>
+                    </div>
+                    <div class="content_profile">
+                        <p id="person_description"></p>
+                        <div class="tags_qr">
+                            <div class="qr_content">
+                                <img src="" id="qr_linktree">
+                                <div>
+                                    <h2 class="smaller">WANT TO SEE MORE?</h2>
+                                    <p>Scan the QR code to see the Linktree.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h2>PROJECTS</h2>
+                    <div class="three_columns">
+                        <div class="project_overview" onclick="openProject(1)">
+                            <div class="image_project" id="image_project_01">
+                                <div class="label_project dynamic_border" id="label_project_01">University project</div>
+                            </div>
+                            <div id="title_project_01" class="screen02_title"></div>
+                            <div id="subtitle_project_01" class="dynamic_color screen02_subtitle"></div>
+                        </div>
+                        <div class="project_overview" onclick="openProject(2)">
+                            <div class="image_project" id="image_project_02">
+                                <div class="label_project dynamic_border" id="label_project_02">University project</div>
+                            </div>
+                            <div id="title_project_02" class="screen02_title"></div>
+                            <div id="subtitle_project_02" class="dynamic_color screen02_subtitle"></div>
+                        </div>
+                        <div class="project_overview" onclick="openProject(3)">
+                            <div class="image_project" id="image_project_03">
+                                <div class="label_project dynamic_border" id="label_project_03">University project</div>
+                            </div>
+                            <div id="title_project_03" class="screen02_title"></div>
+                            <div id="subtitle_project_03" class="dynamic_color screen02_subtitle"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="button button_center" onclick="BackPeriodTable()"><img src="img/icons/icon_1.svg"></div>
+        </section>
+
+        <!-- PROJECT SCREEN -->
+        <section id="screen03">
+            <div class="arrows">
+                <div class="prev">
+                    <div><img class="icon" src="img/icons/icon_3.svg"> Prev</div>
+                    <div id="prev_project" class="other_project"></div>
+                </div>
+                <div class="next">
+                    <div>Next <img class="icon" src="img/icons/icon_4.svg"></div>
+                    <div id="next_project" class="other_project"></div>
+                </div>
+            </div>
+            <div class="container">
+                <h1 id="project_title" class="align_center"></h1>
+                <p id="project_subtitle" class="align_center dynamic_color text_48"></p>
+                <div class="three_column_big">
+                    <div id="project_media">
+                    </div>
+                    <div id="content_container">
+                    </div>
+                    <div id="project_content">
+                        <h2>CONTRIBUTORS</h2>
+                        <p id="project_contributors"></p>
+                        <p id="projects_university"></p>
+                        <div id="tags_project"></div>
+                    </div>
+                </div>
+                <p id="project_description"></p>
+            </div>
+            <div class="center_buttons">
+                <div class="button arrow" onclick="BackProfile()"><img src="img/icons/icon_2.svg"></div>
+                <div class="button" onclick="BackPeriodTable()"><img src="img/icons/icon_1.svg"></div>
+            </div>
+        </section>
+
+        <!-- EXPLANATION SCREEN -->
+        <section id="screen04">
+            <div class="explanation">
+                <h1>PORTFOLIO MACHINE</h1>
+                <p>This is the Portfolio Machine of CMSI 21. We worked entesque eu, pretium quis, sem. Nulla consequat massa quis enim. Nulla donec pede justo, fringilla vel, aliquet nec, vulputate.
+                    <br><br>Parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate. Epretium quis, sem. Nulla consequat massa quis enim donec pede. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. dapibus. Vivamus elementum semper nisi.
+                </p>
+                <h2>INSTRUCTIONS</h2>
+                <p>Open a student's portfolio by clicking their entry in the table. Their lamp will light up on the wall.
+                    <br><br>Put one or more majors in focus by putting them on spotlight. The lamps of all students in these majors will light up on the wall.</p>
+                <div class="button button_absolute" onclick="CloseExplanation();"><img src="img/icons/icon_1.svg"></div>
+            </div>
+        </section>
+
+        <!-- IDLE SCREEN -->
+        <section id="screen05">
+            <h2 class="sphere" id="md_sphere" onclick="OpenPT(2)">MEDIA</h2>
+            <h2 class="sphere" id="id_sphere" onclick="OpenPT(4)">INTERACTION</h2>
+            <h2 class="sphere" id="sd_sphere" onclick="OpenPT(3)">SOUND</h2>
+            <h2 class="sphere" id="cd_sphere" onclick="OpenPT(1)">COMMUNICATION</h2>
+            <h1 class="sphere" id="all_sphere" onclick="OpenPT(0)">CMSI DESIGN ATMOSPHERE</h1>
+            <p>Click to get to know the atoms of the CMSI atmosphere</p>
+        </section>
+    </main>
+    <script src='periodic_table_visualisation.js' async></script>
+</body>
+
+</html>
