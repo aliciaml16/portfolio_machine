@@ -1104,7 +1104,7 @@ function ClickSD() {
 
   if (isSDOn == true) {
     isSDOn = false;
-    SendToResolume("http://0.0.0.0:8080/api/v1/composition/layers/3/clear");
+    SendToResolume("http://" + address + ":" + port + "/api/v1/composition/layers/3/clear");
   } else {
     isSDOn = true;
     SendToResolume("http://" + address + ":" + port + "/api/v1/composition/layers/3/clips/1/connect");
@@ -1130,7 +1130,7 @@ function ClickCD() {
   
   if (isCDOn == true) {
     isCDOn = false;
-    SendToResolume("http://0.0.0.0:8080/api/v1/composition/layers/2/clear");
+    SendToResolume("http://" + address + ":" + port + "/api/v1/composition/layers/2/clear");
   } else {
     isCDOn = true;
     SendToResolume("http://" + address + ":" + port + "/api/v1/composition/layers/2/clips/1/connect");
@@ -1156,7 +1156,7 @@ function ClickID() {
   
   if (isIDOn == true) {
     isIDOn = false;
-    SendToResolume("http://0.0.0.0:8080/api/v1/composition/layers/5/clear");
+    SendToResolume("http://" + address + ":" + port + "/api/v1/composition/layers/5/clear");
   } else {
     isIDOn = true;
     SendToResolume("http://" + address + ":" + port + "/api/v1/composition/layers/5/clips/1/connect");
@@ -1182,7 +1182,7 @@ function ClickMD() {
   
   if (isMDOn == true) {
     isMDOn = false;
-    SendToResolume("http://0.0.0.0:8080/api/v1/composition/layers/4/clear");
+    SendToResolume("http://" + address + ":" + port + "/api/v1/composition/layers/4/clear");
   } else {
     isMDOn = true;
     SendToResolume("http://" + address + ":" + port + "/api/v1/composition/layers/4/clips/1/connect");
@@ -1270,12 +1270,11 @@ var address = "127.0.0.1"
 function SendToResolume(url) {
   let xhr = new XMLHttpRequest();
     xhr.open("POST", url);
-
     xhr.send();
 }
 
 function clearAllResolume() {
-  for (i = 1 ; i < 8 ; i++) {
-    SendToResolume("http://0.0.0.0:8080/api/v1/composition/layers/" + i + "/clear");
-  }
+  // for (i = 1 ; i < 8 ; i++) {
+  //   SendToResolume("http://" + address + ":" + port + "/api/v1/composition/layers/" + i + "/clear");
+  // }
 }
