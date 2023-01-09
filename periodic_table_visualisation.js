@@ -128,9 +128,15 @@ function CreateElements(json) {
     divMiddle.append(h2Middle);
 
     let h3Middle = document.createElement("h3");
-    h3Middle.innerHTML =
+    if (json["people"][i]["surname"].includes("Szabo")) {
+      h3Middle.innerHTML = "Sk";
+    } else if (json["people"][i]["surname"].includes("Diego")) {
+      h3Middle.innerHTML = "Pd";
+    } else {
+      h3Middle.innerHTML =
       json["people"][i]["surname"].charAt(0) +
       json["people"][i]["surname"].charAt(1);
+    }
     divMiddle.append(h3Middle);
 
     let pBottom = document.createElement("p");
@@ -273,6 +279,10 @@ function OpenProfile(json, id) {
   } else {
     label_project_03.textContent = "Private project";
   }
+
+  // Action in resolume
+  clearAllResolume();
+  SendToResolume("http://" + address + ":" + port + "/api/v1/composition/layers/1/clips/" + toString(json["people"][id]["position_resolume"]) + "/connect");
 
   UpdateDynamic(json, id);
 }
@@ -1065,6 +1075,18 @@ function OpenPT(id) {
   }
 }
 
+function openFabry() {
+  clearAllResolume();
+  SendToResolume("http://" + address + ":" + port + "/api/v1/composition/layers/1/clips/1/connect");
+
+  setTimeout(function () {
+    clearAllResolume();
+    SendToResolume("http://" + address + ":" + port + "/api/v1/composition/layers/7/clips/1/connect");
+  }, 3000);
+}
+
+var isSDOn = false;
+
 function ClickSD() {
   var SD_elements = document.getElementsByClassName("SD");
 
@@ -1079,8 +1101,17 @@ function ClickSD() {
       SD_elements[i].style.backgroundColor = "var(--sdOp)";
     }
   }
-  //SendToResolume("http://0.0.0.0:8080/api/v1/composition/layers/1/clips/1/connect");
+
+  if (isSDOn == true) {
+    isSDOn = false;
+    SendToResolume("http://0.0.0.0:8080/api/v1/composition/layers/3/clear");
+  } else {
+    isSDOn = true;
+    SendToResolume("http://" + address + ":" + port + "/api/v1/composition/layers/3/clips/1/connect");
+  }
 }
+
+var isCDOn = false;
 
 function ClickCD() {
   var CD_elements = document.getElementsByClassName("CD");
@@ -1096,8 +1127,17 @@ function ClickCD() {
       CD_elements[i].style.backgroundColor = "var(--cdOp)";
     }
   }
-  //SendToResolume("http://0.0.0.0:8080/api/v1/composition/layers/1/clips/2/connect");
+  
+  if (isCDOn == true) {
+    isCDOn = false;
+    SendToResolume("http://0.0.0.0:8080/api/v1/composition/layers/2/clear");
+  } else {
+    isCDOn = true;
+    SendToResolume("http://" + address + ":" + port + "/api/v1/composition/layers/2/clips/1/connect");
+  }
 }
+
+var isIDOn = false;
 
 function ClickID() {
   var ID_elements = document.getElementsByClassName("ID");
@@ -1113,8 +1153,17 @@ function ClickID() {
       ID_elements[i].style.backgroundColor = "var(--idOp)";
     }
   }
-  //SendToResolume("http://0.0.0.0:8080/api/v1/composition/layers/1/clips/3/connect");
+  
+  if (isIDOn == true) {
+    isIDOn = false;
+    SendToResolume("http://0.0.0.0:8080/api/v1/composition/layers/5/clear");
+  } else {
+    isIDOn = true;
+    SendToResolume("http://" + address + ":" + port + "/api/v1/composition/layers/5/clips/1/connect");
+  }
 }
+
+var isMDOn = false;
 
 function ClickMD() {
   var MD_elements = document.getElementsByClassName("MD");
@@ -1130,20 +1179,41 @@ function ClickMD() {
       MD_elements[i].style.backgroundColor = "var(--mdOp)";
     }
   }
-  //SendToResolume("http://0.0.0.0:8080/api/v1/composition/layers/1/clips/4/connect");
+  
+  if (isMDOn == true) {
+    isMDOn = false;
+    SendToResolume("http://0.0.0.0:8080/api/v1/composition/layers/4/clear");
+  } else {
+    isMDOn = true;
+    SendToResolume("http://" + address + ":" + port + "/api/v1/composition/layers/4/clips/1/connect");
+  }
 }
 
-// Open idlevar myTimeout;
-var myTimeout = window.setTimeout(OpenIdle, 20000);
+// Timer back to idle
+var timeToIdle = 60000;
+var myTimeout = window.setTimeout(OpenIdle, timeToIdle);
 
 window.onclick = function(){
   window.clearTimeout(myTimeout);
-  myTimeout = window.setTimeout(OpenIdle, 20000);
+  myTimeout = window.setTimeout(OpenIdle, timeToIdle);
 };
 
 function OpenIdle() {
   BackPeriodTable();
   screen05.style.opacity = 1;
+
+  for (i = 0; i < elements.length; i++) {
+    elements[i].style.backgroundColor = "var(--black)";
+    elements[i].style.opacity = "0";
+    MD_button.classList.remove("active");
+    SD_button.classList.remove("active");
+    ID_button.classList.remove("active");
+    CD_button.classList.remove("active");
+  }
+
+  clearAllResolume();
+  SendToResolume("http://" + address + ":" + port + "/api/v1/composition/layers/6/clips/1/connect");
+
   setTimeout(function () {
     screen05.style.zIndex = 3;
   }, 150);
@@ -1171,6 +1241,9 @@ function BackProfile() {
 var elements = document.getElementsByClassName("element");
 
 function BackPeriodTable() {
+  clearAllResolume();
+  SendToResolume("http://" + address + ":" + port + "/api/v1/composition/layers/7/clips/1/connect");
+
   screen02.style.opacity = 0;
   screen02.style.zIndex = -1;
   screen03.style.opacity = 0;
@@ -1191,9 +1264,18 @@ function BackPeriodTable() {
 }
 
 // --------------------------------------------------------------------------- RESOLUME
+var port = "8080";
+var address = "127.0.0.1"
+
 function SendToResolume(url) {
   let xhr = new XMLHttpRequest();
     xhr.open("POST", url);
 
     xhr.send();
+}
+
+function clearAllResolume() {
+  for (i = 1 ; i < 8 ; i++) {
+    SendToResolume("http://0.0.0.0:8080/api/v1/composition/layers/" + i + "/clear");
+  }
 }

@@ -1,11 +1,11 @@
 @font-face {
     font-family: Amiko;
-    src: url("/fonts/Amiko/Amiko-Regular.ttf");
+    src: url("fonts/Acumin Pro Book.otf");
 }
 
 @font-face {
     font-family: BalleDeMai;
-    src: url("/fonts/BelledeMai-Bold-mlwrbd.otf");
+    src: url("fonts/BelledeMai-Bold-mlwrbd.otf");
 }
 
 :root {
@@ -403,7 +403,7 @@ iframe {
     height: var(--heightElement);
     border: 2px solid var(--white);
 
-    background-image: url("../img/example01.jpg");
+    background-image: url("./img/example01.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -822,35 +822,35 @@ iframe {
 
 #md_sphere {
     width: 620px;
-    background-image: url("../img/md_sphere.png");
+    background-image: url("./img/md_sphere.png");
     top: 152px;
     left: 688px;
 }
 
 #id_sphere {
     width: 850px;
-    background-image: url("../img/id_sphere.png");
+    background-image: url("./img/id_sphere.png");
     top: 1070px;
     left: 163px;
 }
 
 #sd_sphere {
     width: 580px;
-    background-image: url("../img/sd_sphere.png");
+    background-image: url("./img/sd_sphere.png");
     top: 1230px;
     left: 2681px;
 }
 
 #cd_sphere {
     width: 700px;
-    background-image: url("../img/cd_sphere.png");
+    background-image: url("./img/cd_sphere.png");
     top: 200px;
     left: 2771px;
 }
 
 #all_sphere {
     width: 1200px;
-    background-image: url("../img/cmsi_sphere.png");
+    background-image: url("./img/cmsi_sphere.png");
     top: 480px;
     left: 1320px;
 }
