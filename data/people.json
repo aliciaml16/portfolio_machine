@@ -493,9 +493,9 @@
             "project01_subtitle": "Interactive installation",
             "project01_contributors": "Co-pilot Charlotte Heller",
             "project01_university_project": "Yes",
-            "project01_media": [[ "img/martinezlopez_project1.1.jpg", "image", ""],
-            [ "img/martinezlopez_project1.2.jpg", "image" , "" ],
-            [ "img/martinezlopez_project1.3.jpg", "image" , ""]
+            "project01_media": [[ "img/martinezlopez/martinezlopez_project1.1.jpg", "image", ""],
+            [ "img/martinezlopez/martinezlopez_project1.2.jpg", "image" , "" ],
+            [ "img/martinezlopez/martinezlopez_project1.3.jpg", "image" , ""]
             ],
             "project01_description": "Our society today bases its communications on digital media. In other words, we connect with people through a screen, a fact that has become more noticeable since the onset of the pandemic. <br><br>Even so, human connection is still very important and necessary, and this poster aims to demonstrate this through an interaction between two users. <br><br>The poster features two interactive touchpoints that will allow users to connect with the poster. However, the final message will not be visible until both users interacting with each touchpoint connect with each other to close a circuit and show the moral of the work. <br><br>This poster was shown in “The Next Poster” exhibition in Graz, Austria. ",
             "project01_tags": [ "Interactive", "Connection", "Programming"],
@@ -504,9 +504,9 @@
             "project02_subtitle": "Exhibition Design",
             "project02_contributors": "",
             "project02_university_project": "No",
-            "project02_media": [[ "img/martinezlopez_project2.1.jpg", "image", ""],
-            [ "img/martinezlopez_project2.2.jpg", "image", ""],
-            [ "img/martinezlopez_project2.3.jpg", "image" , ""]
+            "project02_media": [[ "img/martinezlopez/martinezlopez_project2.1.jpg", "image", ""],
+            [ "img/martinezlopez/martinezlopez_project2.2.jpg", "image", ""],
+            [ "img/martinezlopez/martinezlopez_project2.3.jpg", "image" , ""]
             ],
             "project02_description": "This study proposes the development of an interactive space for children aged 6 to 8 to learn about themselves through Multiple Intelligences.  <br><br>The goal is to use Information and Communication Technologies (ICT) and apply Universal Design Principles to create a playful, educational interface that promotes the recognition and application of Multiple Intelligences. That way different forms of intelligence beyond linguistic and logical-mathematical knowledge are highlighted.  <br><br>To this end, the conceptualisation of a dynamic environment based on the idea of fun and learning is proposed. This will be possible thanks to the ideation and design of an interactive installation that will help the public to understand what Multiple Intelligences are and, through a questionnaire, find out which of them they have developed the most. <br><br>This project was presented as the master's Thesis in the MA Visual Arts and Media (Valencia, Spain). ",
             "project02_tags": [ "Branding", "App Design","App Development","Thesis"],
@@ -515,9 +515,9 @@
             "project03_subtitle": "Social initiative",
             "project03_contributors": "",
             "project03_university_project": "No",
-            "project03_media": [[ "img/martinezlopez_project3.1.jpg", "image", ""],
-            [ "img/martinezlopez_project3.2.mp4", "video" , "img/martinezlopez_project3.2_thumbnail.jpg" ],
-            [ "img/martinezlopez_project3.3.png", "image" , ""]
+            "project03_media": [[ "img/martinezlopez/martinezlopez_project3.1.jpg", "image", ""],
+            [ "img/martinezlopez/martinezlopez_project3.2.mp4", "video" , "img/martinezlopez_project3.2_thumbnail.jpg" ],
+            [ "img/martinezlopez/martinezlopez_project3.3.png", "image" , ""]
             ],
             "project03_description": "Valencia 4CHANGE aims to activate a process of change through the involvement of the city's inhabitants by means of daily actions and fun through everyday actions and challenges that add up to the achievement of the SDGs, achieving, at the same time, enjoyment, awareness and commitment.  <br><br>Aimed mainly at citizens of Valencia between 15 and 40 years old, it uses interactive systems and gamification as a means of interaction to create a more engaging and fun experience.  <br><br>Valencia 4CHANGE raises awareness through 4 main areas: a) Art and Culture; b) Environment; c) Equality; d) Health and Safety; e) Culture; c) Equality; d) Health and well-being. <br><br>This project was presented as the bachelor's Thesis in the BA Design and Creative Technologies (Valencia, Spain) and won the 2nd Price in the 7th Edition of the University Entrepreneur Competition STARTUPV 2k20 (December 2020). ",
             "project03_tags": [ "Branding", "App Design", "Web Development", "Social Awarness", "Thesis"],
