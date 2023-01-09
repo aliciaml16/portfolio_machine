@@ -9,6 +9,7 @@ request.send();
 request.onload = function () {
   people = request.response;
   CreateElements(people);
+  OpenIdle();
 };
 
 // --------------------------------------------------------------------------- SCREEN PERIODIC TABLE
@@ -1104,11 +1105,14 @@ function ClickSD() {
 
   if (isSDOn == true) {
     isSDOn = false;
+    clearAllResolume();
     SendToResolume("http://0.0.0.0:8080/api/v1/composition/layers/3/clear");
   } else {
     isSDOn = true;
+    clearAllResolume();
     SendToResolume("http://" + address + ":" + port + "/api/v1/composition/layers/3/clips/1/connect");
   }
+  mainScreen();
 }
 
 var isCDOn = false;
@@ -1130,11 +1134,14 @@ function ClickCD() {
   
   if (isCDOn == true) {
     isCDOn = false;
+    clearAllResolume();
     SendToResolume("http://0.0.0.0:8080/api/v1/composition/layers/2/clear");
   } else {
     isCDOn = true;
+    clearAllResolume();
     SendToResolume("http://" + address + ":" + port + "/api/v1/composition/layers/2/clips/1/connect");
   }
+  mainScreen();
 }
 
 var isIDOn = false;
@@ -1156,11 +1163,14 @@ function ClickID() {
   
   if (isIDOn == true) {
     isIDOn = false;
+    clearAllResolume();
     SendToResolume("http://0.0.0.0:8080/api/v1/composition/layers/5/clear");
   } else {
     isIDOn = true;
+    clearAllResolume();
     SendToResolume("http://" + address + ":" + port + "/api/v1/composition/layers/5/clips/1/connect");
   }
+  mainScreen();
 }
 
 var isMDOn = false;
@@ -1182,11 +1192,14 @@ function ClickMD() {
   
   if (isMDOn == true) {
     isMDOn = false;
+    clearAllResolume();
     SendToResolume("http://0.0.0.0:8080/api/v1/composition/layers/4/clear");
   } else {
     isMDOn = true;
+    clearAllResolume();
     SendToResolume("http://" + address + ":" + port + "/api/v1/composition/layers/4/clips/1/connect");
   }
+  mainScreen();
 }
 
 // Timer back to idle
@@ -1241,9 +1254,6 @@ function BackProfile() {
 var elements = document.getElementsByClassName("element");
 
 function BackPeriodTable() {
-  clearAllResolume();
-  SendToResolume("http://" + address + ":" + port + "/api/v1/composition/layers/7/clips/1/connect");
-
   screen02.style.opacity = 0;
   screen02.style.zIndex = -1;
   screen03.style.opacity = 0;
@@ -1268,14 +1278,22 @@ var port = "8080";
 var address = "127.0.0.1"
 
 function SendToResolume(url) {
-  let xhr = new XMLHttpRequest();
-    xhr.open("POST", url);
+  // let xhr = new XMLHttpRequest();
+  //   xhr.open("POST", url);
 
-    xhr.send();
+  //   xhr.send();
 }
 
 function clearAllResolume() {
+  console.log("clear");
   for (i = 1 ; i < 8 ; i++) {
-    SendToResolume("http://0.0.0.0:8080/api/v1/composition/layers/" + i + "/clear");
+    SendToResolume("http://" + address + ":" + port + "/api/v1/composition/layers/" + i + "/clear");
+  }
+}
+
+function mainScreen() {
+  if (isMDOn == false && isCDOn == false && isIDOn == false  && isSDOn == false ) {
+    clearAllResolume();
+    SendToResolume("http://" + address + ":" + port + "/api/v1/composition/layers/7/clips/1/connect");
   }
 }
