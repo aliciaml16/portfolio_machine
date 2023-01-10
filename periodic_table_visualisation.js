@@ -7,6 +7,7 @@ request.responseType = "json";
 request.send();
 
 request.onload = function () {
+  document.addEventListener('contextmenu', event => event.preventDefault());
   people = request.response;
   CreateElements(people);
   SendToResolume("http://" + address + ":" + port + "/api/v1/composition/layers/1/clear");
@@ -290,6 +291,10 @@ function OpenProfile(json, id) {
   // Action in resolume
   SendToResolume("http://" + address + ":" + port + "/api/v1/composition/layers/1/clips/" + json["people"][id]["position_resolume"] + "/connect");
   SendToResolume("http://" + address + ":" + port + "/api/v1/composition/layers/7/clear");
+  SendToResolume("http://" + address + ":" + port + "/api/v1/composition/layers/2/clear");
+  SendToResolume("http://" + address + ":" + port + "/api/v1/composition/layers/3/clear");
+  SendToResolume("http://" + address + ":" + port + "/api/v1/composition/layers/4/clear");
+  SendToResolume("http://" + address + ":" + port + "/api/v1/composition/layers/5/clear");
 
   UpdateDynamic(json, id);
 }
@@ -1102,8 +1107,9 @@ function openFabry() {
   SendToResolume("http://" + address + ":" + port + "/api/v1/composition/layers/1/clips/1/connect");
 
   setTimeout(function () {
+    SendToResolume("http://" + address + ":" + port + "/api/v1/composition/layers/1/clear");
     SendToResolume("http://" + address + ":" + port + "/api/v1/composition/layers/7/clips/1/connect");
-  }, 3000);
+  }, 5000);
 }
 
 var isSDOn = false;
