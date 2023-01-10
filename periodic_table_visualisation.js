@@ -9,6 +9,13 @@ request.send();
 request.onload = function () {
   people = request.response;
   CreateElements(people);
+  SendToResolume("http://" + address + ":" + port + "/api/v1/composition/layers/1/clear");
+  SendToResolume("http://" + address + ":" + port + "/api/v1/composition/layers/2/clear");
+  SendToResolume("http://" + address + ":" + port + "/api/v1/composition/layers/3/clear");
+  SendToResolume("http://" + address + ":" + port + "/api/v1/composition/layers/4/clear");
+  SendToResolume("http://" + address + ":" + port + "/api/v1/composition/layers/5/clear");
+  SendToResolume("http://" + address + ":" + port + "/api/v1/composition/layers/6/clips/1/connect");
+  SendToResolume("http://" + address + ":" + port + "/api/v1/composition/layers/7/clear");
 };
 
 // --------------------------------------------------------------------------- SCREEN PERIODIC TABLE
@@ -281,8 +288,8 @@ function OpenProfile(json, id) {
   }
 
   // Action in resolume
-  clearAllResolume();
-  SendToResolume("http://" + address + ":" + port + "/api/v1/composition/layers/1/clips/" + toString(json["people"][id]["position_resolume"]) + "/connect");
+  SendToResolume("http://" + address + ":" + port + "/api/v1/composition/layers/1/clips/" + json["people"][id]["position_resolume"] + "/connect");
+  SendToResolume("http://" + address + ":" + port + "/api/v1/composition/layers/7/clear");
 
   UpdateDynamic(json, id);
 }
@@ -1066,21 +1073,35 @@ function OpenPT(id) {
 
   if (id == 1) {
     ClickCD();
+    isCDOn = true;
+    SendToResolume("http://" + address + ":" + port + "/api/v1/composition/layers/6/clear");
+    SendToResolume("http://" + address + ":" + port + "/api/v1/composition/layers/2/clips/1/connect");
   } else if (id == 2) {
     ClickMD();
+    isMDOn = true;
+    SendToResolume("http://" + address + ":" + port + "/api/v1/composition/layers/6/clear");
+    SendToResolume("http://" + address + ":" + port + "/api/v1/composition/layers/4/clips/1/connect");
   } else if (id == 3) {
     ClickSD();
+    isSDOn = true;
+    SendToResolume("http://" + address + ":" + port + "/api/v1/composition/layers/6/clear");
+    SendToResolume("http://" + address + ":" + port + "/api/v1/composition/layers/3/clips/1/connect");
   } else if (id == 4) {
     ClickID();
+    isIDOn = true;
+    SendToResolume("http://" + address + ":" + port + "/api/v1/composition/layers/6/clear");
+    SendToResolume("http://" + address + ":" + port + "/api/v1/composition/layers/5/clips/1/connect");
+  } else {
+    SendToResolume("http://" + address + ":" + port + "/api/v1/composition/layers/6/clear");
+    SendToResolume("http://" + address + ":" + port + "/api/v1/composition/layers/7/clips/1/connect");
   }
 }
 
 function openFabry() {
-  clearAllResolume();
+  SendToResolume("http://" + address + ":" + port + "/api/v1/composition/layers/7/clear");
   SendToResolume("http://" + address + ":" + port + "/api/v1/composition/layers/1/clips/1/connect");
 
   setTimeout(function () {
-    clearAllResolume();
     SendToResolume("http://" + address + ":" + port + "/api/v1/composition/layers/7/clips/1/connect");
   }, 3000);
 }
@@ -1109,6 +1130,8 @@ function ClickSD() {
     isSDOn = true;
     SendToResolume("http://" + address + ":" + port + "/api/v1/composition/layers/3/clips/1/connect");
   }
+
+  checkIdleInside();
 }
 
 var isCDOn = false;
@@ -1135,6 +1158,8 @@ function ClickCD() {
     isCDOn = true;
     SendToResolume("http://" + address + ":" + port + "/api/v1/composition/layers/2/clips/1/connect");
   }
+
+  checkIdleInside();
 }
 
 var isIDOn = false;
@@ -1161,6 +1186,8 @@ function ClickID() {
     isIDOn = true;
     SendToResolume("http://" + address + ":" + port + "/api/v1/composition/layers/5/clips/1/connect");
   }
+
+  checkIdleInside();
 }
 
 var isMDOn = false;
@@ -1187,6 +1214,8 @@ function ClickMD() {
     isMDOn = true;
     SendToResolume("http://" + address + ":" + port + "/api/v1/composition/layers/4/clips/1/connect");
   }
+
+  checkIdleInside();
 }
 
 // Timer back to idle
@@ -1211,7 +1240,7 @@ function OpenIdle() {
     CD_button.classList.remove("active");
   }
 
-  clearAllResolume();
+  SendToResolume("http://" + address + ":" + port + "/api/v1/composition/layers/7/clear");
   SendToResolume("http://" + address + ":" + port + "/api/v1/composition/layers/6/clips/1/connect");
 
   setTimeout(function () {
@@ -1241,9 +1270,6 @@ function BackProfile() {
 var elements = document.getElementsByClassName("element");
 
 function BackPeriodTable() {
-  clearAllResolume();
-  SendToResolume("http://" + address + ":" + port + "/api/v1/composition/layers/7/clips/1/connect");
-
   screen02.style.opacity = 0;
   screen02.style.zIndex = -1;
   screen03.style.opacity = 0;
@@ -1261,6 +1287,9 @@ function BackPeriodTable() {
     elements[i].classList.remove("main_element_prev_hide");
     elements[i].style.opacity = "1";
   }
+
+  SendToResolume("http://" + address + ":" + port + "/api/v1/composition/layers/7/clips/1/connect");
+  SendToResolume("http://" + address + ":" + port + "/api/v1/composition/layers/1/clear");
 }
 
 // --------------------------------------------------------------------------- RESOLUME
@@ -1273,8 +1302,10 @@ function SendToResolume(url) {
     xhr.send();
 }
 
-function clearAllResolume() {
-  // for (i = 1 ; i < 8 ; i++) {
-  //   SendToResolume("http://" + address + ":" + port + "/api/v1/composition/layers/" + i + "/clear");
-  // }
+function checkIdleInside() {
+  if (isCDOn == false && isMDOn == false && isSDOn == false && isIDOn == false) {
+    SendToResolume("http://" + address + ":" + port + "/api/v1/composition/layers/7/clips/1/connect");
+  } else {
+    SendToResolume("http://" + address + ":" + port + "/api/v1/composition/layers/7/clear");
+  }
 }
