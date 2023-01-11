@@ -56,14 +56,14 @@
         <!-- PROFILE SCREEN -->
         <section id="screen02">
             <div class="arrows">
-                <div class="prev">
+                <div class="prev" id="prev_element" onclick="PrevElement();">
                     <div>
-                        <img class="icon" src="img/icons/icon_3.svg"> Prev
+                        <img class="icon" src="img/icons/icon_3.svg"> Prev element
                     </div>
                 </div>
-                <div class="next">
+                <div class="next" id="next_element" onclick="NextElement();">
                     <div>
-                        Next <img class="icon" src="img/icons/icon_4.svg">
+                        Next element<img class="icon" src="img/icons/icon_4.svg">
                     </div>
                 </div>
             </div>
@@ -123,12 +123,12 @@
         <!-- PROJECT SCREEN -->
         <section id="screen03">
             <div class="arrows">
-                <div class="prev">
-                    <div><img class="icon" src="img/icons/icon_3.svg"> Prev</div>
+                <div class="prev" id="prev_project_click">
+                    <div><img class="icon" src="img/icons/icon_3.svg"> Prev project</div>
                     <div id="prev_project" class="other_project"></div>
                 </div>
-                <div class="next">
-                    <div>Next <img class="icon" src="img/icons/icon_4.svg"></div>
+                <div class="next" id="next_project_click">
+                    <div>Next project<img class="icon" src="img/icons/icon_4.svg"></div>
                     <div id="next_project" class="other_project"></div>
                 </div>
             </div>
@@ -163,8 +163,8 @@
                     <br><br>Parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate. Epretium quis, sem. Nulla consequat massa quis enim donec pede. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. dapibus. Vivamus elementum semper nisi.
                 </p>
                 <h2>INSTRUCTIONS</h2>
-                <p>Open a student's portfolio by clicking their entry in the table. Their lamp will light up on the wall.
-                    <br><br>Put one or more majors in focus by putting them on spotlight. The lamps of all students in these majors will light up on the wall.</p>
+                <p>The portfolio machine is a creative way of showing CMSI students and their projects in an unconventional way and is a fixed part of the CMSI exhibition every year. Each year, the students interpret the task in their own way and therefore come up with a unique concept for the portfolio machine. Since the topic of the whole exhibition is "Creating Atmospheres" we wanted the portfolio machine to fit the theme. So we came up with the idea of a periodic table where each student represents an individual element. Each major has its own color, so people can easily differentiate them. The main message of the project is that we are all different and essential pieces creating one unique atmosphere. All of us are individuals and, at the same time, elements of the big picture.
+                    <br><br>The Portfolio Machine has a big screen where the visitors can have an overview of all the students, who are represented as elements of a periodic table. Besides that, there is a luminous wall made out of small lights, which reacts to the interactions that users take inside the periodic table. Each individual light is a person with a different color and each major is a group of lights on the wall.</p>
                 <div class="button button_absolute" onclick="CloseExplanation();"><img src="img/icons/icon_1.svg"></div>
             </div>
         </section>

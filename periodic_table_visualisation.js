@@ -6,8 +6,25 @@ request.open("GET", requestURL);
 request.responseType = "json";
 request.send();
 
+/* Javascript in shown Kiosk website to prevent multitouch / zoom gestures */
+//disable select/mark text
+document.onmousedown=function() { return false; }
+document.onselectstart = function() { return false; }
+//disable right click
+window.addEventListener("contextmenu", function(e) { e.preventDefault(); })
+//disable multi touch touch stuff
+window.addEventListener("touchstart", touchHandler, { passive: false, capture: false, once: false });
+
+function touchHandler(event) {
+  if (event.touches.length > 1) {
+    //the event is multi-touch
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    return false;
+  }
+}
+
 request.onload = function () {
-  document.addEventListener('contextmenu', event => event.preventDefault());
   people = request.response;
   CreateElements(people);
   SendToResolume("http://" + address + ":" + port + "/api/v1/composition/layers/1/clear");
@@ -347,6 +364,8 @@ var project_contributors = document.getElementById("project_contributors");
 var projects_university = document.getElementById("projects_university");
 var prev_project = document.getElementById("prev_project");
 var next_project = document.getElementById("next_project");
+var prev_project_click = document.getElementById("prev_project_click");
+var prev_project_click = document.getElementById("prev_project_click");
 
 var string01 = ""; // Text for no contributors
 var string02 = "This project was done outside of the master's program CMSI."; // Text for private project
@@ -448,11 +467,11 @@ function DataProject01(json, id) {
   project_subtitle.innerHTML = json["people"][id]["project01_subtitle"];
   project_description.innerHTML = json["people"][id]["project01_description"];
   prev_project.style.backgroundImage = "url('" + json["people"][id]["project03_media"][0][0] + "')";
-  prev_project.onclick = function(event) {
+  prev_project_click.onclick = function(event) {
     DataProject03(json, id);
   }
   next_project.style.backgroundImage = "url('" + json["people"][id]["project02_media"][0][0] + "')";
-  next_project.onclick = function(event) {
+  next_project_click.onclick = function(event) {
     DataProject02(json, id);
   }
 
@@ -564,11 +583,11 @@ function DataProject02(json, id) {
   project_subtitle.innerHTML = json["people"][id]["project02_subtitle"];
   project_description.innerHTML = json["people"][id]["project02_description"];
   prev_project.style.backgroundImage = "url('" + json["people"][id]["project01_media"][0][0] + "')";
-  prev_project.onclick = function(event) {
+  prev_project_click.onclick = function(event) {
     DataProject01(json, id);
   }
   next_project.style.backgroundImage = "url('" + json["people"][id]["project03_media"][0][0] + "')";
-  next_project.onclick = function(event) {
+  next_project_click.onclick = function(event) {
     DataProject03(json, id);
   }
 
@@ -681,11 +700,11 @@ function DataProject03(json, id) {
   project_subtitle.innerHTML = json["people"][id]["project03_subtitle"];
   project_description.innerHTML = json["people"][id]["project03_description"];
   prev_project.style.backgroundImage = "url('" + json["people"][id]["project02_media"][0][0] + "')";
-  prev_project.onclick = function(event) {
+  prev_project_click.onclick = function(event) {
     DataProject02(json, id);
   }
   next_project.style.backgroundImage = "url('" + json["people"][id]["project01_media"][0][0] + "')";
-  next_project.onclick = function(event) {
+  next_project_click.onclick = function(event) {
     DataProject01(json, id);
   }
 
@@ -740,7 +759,7 @@ function SliderNext() {
     }
     for (j = 0 ; j < json["people"][i]["project01_media"].length ; j++) {
       if (actualImage.includes(json["people"][i]["project01_media"][j][0])) {
-        if (j == 2) {
+        if (j == json["people"][i]["project01_media"].length - 1) {
           if (json["people"][i]["project01_media"][0][1].includes("video")) {
             content_container.innerHTML = arrows_sliders_content;
             var iframe = document.createElement("iframe");
@@ -789,7 +808,7 @@ function SliderNext() {
     }
     for (j = 0 ; j < json["people"][i]["project02_media"].length ; j++) {
       if (actualImage.includes(json["people"][i]["project02_media"][j][0])) {
-        if (j == 2) {
+        if (j == json["people"][i]["project02_media"].length - 1) {
           if (json["people"][i]["project02_media"][0][1].includes("video")) {
             content_container.innerHTML = arrows_sliders_content;
             var iframe = document.createElement("iframe");
@@ -838,7 +857,7 @@ function SliderNext() {
     }
     for (j = 0 ; j < json["people"][i]["project03_media"].length ; j++) {
       if (actualImage.includes(json["people"][i]["project03_media"][j][0])) {
-        if (j == 2) {
+        if (j == json["people"][i]["project03_media"].length - 1) {
           if (json["people"][i]["project03_media"][0][1].includes("video")) {
             content_container.innerHTML = arrows_sliders_content;
             var iframe = document.createElement("iframe");
@@ -1112,8 +1131,6 @@ function openFabry() {
   }, 5000);
 }
 
-var isSDOn = false;
-
 function ClickSD() {
   var SD_elements = document.getElementsByClassName("SD");
 
@@ -1129,18 +1146,14 @@ function ClickSD() {
     }
   }
 
-  if (isSDOn == true) {
-    isSDOn = false;
-    SendToResolume("http://" + address + ":" + port + "/api/v1/composition/layers/3/clear");
-  } else {
-    isSDOn = true;
+  if (SD_button.classList.contains("active")) {
     SendToResolume("http://" + address + ":" + port + "/api/v1/composition/layers/3/clips/1/connect");
+  } else {
+    SendToResolume("http://" + address + ":" + port + "/api/v1/composition/layers/3/clear");
   }
 
   checkIdleInside();
 }
-
-var isCDOn = false;
 
 function ClickCD() {
   var CD_elements = document.getElementsByClassName("CD");
@@ -1157,18 +1170,14 @@ function ClickCD() {
     }
   }
   
-  if (isCDOn == true) {
-    isCDOn = false;
-    SendToResolume("http://" + address + ":" + port + "/api/v1/composition/layers/2/clear");
+  if (CD_button.classList.contains("active")) {
+    SendToResolume("http://" + address + ":" + port + "/api/v1/composition/layers/3/clips/1/connect");
   } else {
-    isCDOn = true;
-    SendToResolume("http://" + address + ":" + port + "/api/v1/composition/layers/2/clips/1/connect");
+    SendToResolume("http://" + address + ":" + port + "/api/v1/composition/layers/3/clear");
   }
 
   checkIdleInside();
 }
-
-var isIDOn = false;
 
 function ClickID() {
   var ID_elements = document.getElementsByClassName("ID");
@@ -1185,18 +1194,14 @@ function ClickID() {
     }
   }
   
-  if (isIDOn == true) {
-    isIDOn = false;
-    SendToResolume("http://" + address + ":" + port + "/api/v1/composition/layers/5/clear");
+  if (ID_button.classList.contains("active")) {
+    SendToResolume("http://" + address + ":" + port + "/api/v1/composition/layers/3/clips/1/connect");
   } else {
-    isIDOn = true;
-    SendToResolume("http://" + address + ":" + port + "/api/v1/composition/layers/5/clips/1/connect");
+    SendToResolume("http://" + address + ":" + port + "/api/v1/composition/layers/3/clear");
   }
 
   checkIdleInside();
 }
-
-var isMDOn = false;
 
 function ClickMD() {
   var MD_elements = document.getElementsByClassName("MD");
@@ -1213,12 +1218,10 @@ function ClickMD() {
     }
   }
   
-  if (isMDOn == true) {
-    isMDOn = false;
-    SendToResolume("http://" + address + ":" + port + "/api/v1/composition/layers/4/clear");
+  if (MD_button.classList.contains("active")) {
+    SendToResolume("http://" + address + ":" + port + "/api/v1/composition/layers/3/clips/1/connect");
   } else {
-    isMDOn = true;
-    SendToResolume("http://" + address + ":" + port + "/api/v1/composition/layers/4/clips/1/connect");
+    SendToResolume("http://" + address + ":" + port + "/api/v1/composition/layers/3/clear");
   }
 
   checkIdleInside();
@@ -1252,6 +1255,24 @@ function OpenIdle() {
   setTimeout(function () {
     screen05.style.zIndex = 3;
   }, 150);
+}
+
+function NextElement() {
+  for (i = 0 ; i < elements.length ; i++) {
+    if (elements[i].classList.contains("main_element_next")) {
+        OpenProfile(people, i);
+        break;
+    }
+  }
+}
+
+function PrevElement() {
+  for (i = 0 ; i < elements.length ; i++) {
+    if (elements[i].classList.contains("main_element_prev")) {
+      OpenProfile(people, i);
+      break;
+    }
+  }
 }
 
 // --------------------------------------------------------------------------- BACK FUNCTIONS
@@ -1303,13 +1324,13 @@ var port = "8080";
 var address = "127.0.0.1"
 
 function SendToResolume(url) {
-  let xhr = new XMLHttpRequest();
-    xhr.open("POST", url);
-    xhr.send();
+  // let xhr = new XMLHttpRequest();
+  //   xhr.open("POST", url);
+  //   xhr.send();
 }
 
 function checkIdleInside() {
-  if (isCDOn == false && isMDOn == false && isSDOn == false && isIDOn == false) {
+  if (!MD_button.classList.contains("active") && !SD_button.classList.contains("active") && !ID_button.classList.contains("active") && !CD_button.classList.contains("active")) {
     SendToResolume("http://" + address + ":" + port + "/api/v1/composition/layers/7/clips/1/connect");
   } else {
     SendToResolume("http://" + address + ":" + port + "/api/v1/composition/layers/7/clear");

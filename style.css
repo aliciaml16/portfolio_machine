@@ -1,6 +1,6 @@
 @font-face {
     font-family: Amiko;
-    src: url("fonts/Acumin-Pro-Book.otf");
+    src: url("fonts/Acumin Pro Light.otf");
 }
 
 @font-face {
@@ -301,6 +301,10 @@ iframe {
     display: flex;
 }
 
+.middle_content h3 {
+    padding-bottom: 7px;
+}
+
 .top_content {
     justify-content: space-between;
     align-items: center;
@@ -385,9 +389,6 @@ iframe {
 
 .next { 
     right: 190px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
 }
 
 .next img {margin-left: 30px;}
@@ -396,6 +397,16 @@ iframe {
     position: absolute;
     top: 38%;
     z-index: 300;
+    font-size: 30px;
+}
+
+.prev > div, .next > div {
+    display: flex;
+    align-items: center;
+}
+
+.next > div {
+    justify-content: flex-end;
 }
 
 .other_project {
@@ -706,6 +717,7 @@ iframe {
     height: 230px;
     background-position: center;
     border: 2px solid var(--white);
+    margin-bottom: 28px;
     background-image: url("https://images.pexels.com/photos/8634740/pexels-photo-8634740.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
 }
 
@@ -714,7 +726,6 @@ iframe {
     margin-top: 3em;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
 }
 
 #project_content {
@@ -787,6 +798,7 @@ iframe {
     z-index: 3;
 
     background-color: var(--black);
+    background-image: url("img/Idol-state-lines.svg");
 }
 
 #screen05 > * {
@@ -831,7 +843,7 @@ iframe {
     width: 850px;
     background-image: url("./img/id_sphere.png");
     top: 1070px;
-    left: 163px;
+    left: 263px;
 }
 
 #sd_sphere {

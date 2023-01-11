@@ -7,7 +7,7 @@
             "profile_picture": "img/example01.jpg",
             "personal_description": "Lorem ipsum dolor sit amet consectetur adipiscing elit imperdiet integer congue auctor ultricies facilisis vel, dis nam eu nunc sollicitudin vehicula ornare primis fames class tempor mollis Rhoncus morbi magnis erat nostra per lacinia ultrices sem magna, at dis vestibulum primis tristique vulputate iaculis hendrerit feugiat, cum nulla egestas felis euismod imperdiet condimentum porttitor. Bibendum consequat pharetra curabitur purus facilisis a urna dapibus dictumst, vitae metus eros vehicula vestibulum ridiculus mollis lacus nisl egestas, nunc nascetur montes ultricies orci convallis praesent nam.",
             "tags": ["UX Designer", "Tag02", "Tag03", "Tag04", "Tag05" ],
-            "qr_linktree": "img/qr_test.png",
+            "qr_linktree": "img/martinezlopez/martinezlopez_qr.png",
             "project01_title": "Project title 01",
             "project01_subtitle": "Subtitle",
             "project01_contributors": "",
@@ -344,7 +344,7 @@
             "project02_university_project": "Yes",
             "project02_media": [[ "img/szabokass/SzaboKass_Project2.1.jpg", "image", ""],
             [ "img/szabokass/SzaboKass_Project2.2.jpg", "image" , "" ],
-            [ "img/szabokass/SzaboKass_Project2.3.mp4", "video" , "img/szabokass/SzaboKass_Project2.3.jpg"]
+            [ "img/szabokass/SzaboKass_Project2.3.mp4", "video" , "img/szabokass/SzaboKass_Project2.3-thumbnail.jpg"]
             ],
             "project02_description": "This interactive poster deals with the topic of concentration and distractions in a permanently buzzing and overloaded environment. In our dynamic world we have to focus on every information precisely if we want to understand it. This poster forces the viewer to focus on one information source long enough to be able to read the messages, shown slowly character by character. While doing so, coloured characters start to pulse at other locations to distract the spectator. <br><br>With the help of eye-tracking, the messages are displayed in the focus of the viewer’s gaze and every eye movement in different directions can reset the message display – so that the viewer needs to start over focusing again.<br><br>The project was created for the exhibition “The Next Poster” at the Designforum Steiermark, shown between Sept.-Dec. 2022.",
             "project02_tags": [ "Eye Tracking", "Generative Art","Future Visions"],
@@ -516,7 +516,7 @@
             "project03_contributors": "",
             "project03_university_project": "No",
             "project03_media": [[ "img/martinezlopez/martinezlopez_project3.1.jpg", "image", ""],
-            [ "img/martinezlopez/martinezlopez_project3.2.mp4", "video" , "img/martinezlopez_project3.2_thumbnail.jpg" ],
+            [ "img/martinezlopez/martinezlopez_project3.2.mp4", "video" , "img/martinezlopez/martinezlopez_project3.2_thumbnail.jpg" ],
             [ "img/martinezlopez/martinezlopez_project3.3.png", "image" , ""]
             ],
             "project03_description": "Valencia 4CHANGE aims to activate a process of change through the involvement of the city's inhabitants by means of daily actions and fun through everyday actions and challenges that add up to the achievement of the SDGs, achieving, at the same time, enjoyment, awareness and commitment.  <br><br>Aimed mainly at citizens of Valencia between 15 and 40 years old, it uses interactive systems and gamification as a means of interaction to create a more engaging and fun experience.  <br><br>Valencia 4CHANGE raises awareness through 4 main areas: a) Art and Culture; b) Environment; c) Equality; d) Health and Safety; e) Culture; c) Equality; d) Health and well-being. <br><br>This project was presented as the bachelor's Thesis in the BA Design and Creative Technologies (Valencia, Spain) and won the 2nd Price in the 7th Edition of the University Entrepreneur Competition STARTUPV 2k20 (December 2020). ",
@@ -575,9 +575,9 @@
             "project01_subtitle": "Interactive Poster",
             "project01_contributors": "",
             "project01_university_project": "Yes",
-            "project01_media": [[ "img/mueller/project1.1.jpg", "image", ""],
-            [ "img/mueller/project1.2.jpg", "image" , "" ],
-            [ "img/mueller/project1.3.jpg", "image" , ""]
+            "project01_media": [[ "img/mueller/mueller_project1.1.jpg", "image", ""],
+            [ "img/mueller/mueller_project1.2.jpg", "image" , "" ],
+            [ "img/mueller/mueller_project1.3.jpg", "image" , ""]
             ],
             "project01_description": "Posters and adverts consume a lot of energy while they are lit until late at night, but most of the time, they are by themselves. No one there to look at them, engage with them – only burning electricity and causing light pollution. And adding insult to injury, nobody was asked if they wanted exposure to said poster in the first place. With this poster, its contents are only revealed when someone is present and physically interacts with a button press. It not only saves energy; it also gives back control to the viewer: with an opt-in-approach if they choose to view the poster by their own free will – preventing unsolicited exposure – ultimately making it a “wanted” poster.  ",
             "project01_tags": [ "Poster", "Interaction", "Consumer's Choice"],
@@ -585,9 +585,9 @@
             "project02_subtitle": "Navigation app concept",
             "project02_contributors": "Austin Coll, Stefanie Frossard, Georg Mörth, Max Müller, Lisa Ruß, Patrick Wibmer",
             "project02_university_project": "Yes",
-            "project02_media": [[ "img/mueller/project3.1.jpg", "image", ""],
-            [ "img/mueller/project2.2.jpg", "image" , "" ],
-            [ "img/mueller/project2.3.jpg", "image" , ""]
+            "project02_media": [[ "img/mueller/mueller_project2.1.jpg", "image", ""],
+            [ "img/mueller/mueller_project2.2.jpg", "image" , "" ],
+            [ "img/mueller/mueller_project2.3.jpg", "image" , ""]
             ],
             "project02_description": "We developed a concept and prototype for a navigation app for the KIÖR (Kunst im öffentlichen Raum Steiermark) Institute in Styria. The goal of the app is to raise awareness of and sensitize people to the art and other notable features in these public spaces. It primarily provides information about existing public art and enables navigation between these special locations. The app was designed to have a creative and innovative approach that can be easily edited by the KIOER institute. It was also important to involve the users, who can contribute their own findings and locations through the app for others to discover.",
             "project02_tags": [ "Kiör", "Wayfinding","App","Intoto "],
@@ -595,9 +595,9 @@
             "project03_subtitle": "Game concept",
             "project03_contributors": "David Fesl, Max Müller",
             "project03_university_project": "Yes",
-            "project03_media": [[ "img/mueller/project3.1.jpg", "image", ""],
-            [ "img/mueller/project3.2.jpg", "image" , "" ],
-            [ "img/mueller/project3.3.jpg", "image" , ""]
+            "project03_media": [[ "img/mueller/mueller_project3.1.jpg", "image", ""],
+            [ "img/mueller/mueller_project3.2.jpg", "image" , "" ],
+            [ "img/mueller/mueller_project3.3.jpg", "image" , ""]
             ],
             "project03_description": "DECAY is a horror-exploration game concept developed with Unity, set in an abandoned bunker facility that appears to have been the site of questionable experiments. Players can roam the dilapidated hallways using their phone as a controller with OSC and uncover the secrets of this place, including the stories of what happened there. The environment is filled with mini stories that reveal gruesome tales waiting to be discovered. But be warned, there may still be some former inhabitants lurking in the shadows...",
             "project03_tags": [ "Game Design", "Horror", "Unity", "OSC"],
@@ -1425,9 +1425,8 @@
             "project02_subtitle": "Light Show",
             "project02_contributors": "Christoph Bus, Lucia Perez Diego, Alicia Martinez Lopez, Selina May",
             "project02_university_project": "Yes",
-            "project02_media": [[ "img/davletshyn/davletshyn_project2.1.mp4", "video", "img/davletshyn/davletshyn_project2.2.jpg"],
-            [ "img/davletshyn/davletshyn_project2.2.jpg", "image" , "" ],
-            [ "", "image" , ""]
+            "project02_media": [[ "img/davletshyn/davletshyn_project2.2.jpg", "image" , "" ],
+            ["img/davletshyn/davletshyn_project2.1.mp4", "video", "img/davletshyn/davletshyn_project2.2.jpg"]
             ],
             "project02_description": "Together with the university group, we were creating a project for the Klanglicht festival in Graz. The main topic of the exhibition was “Growth”. Each student's group based on their creative approach was showing this topic by producing a light installation with music. In our group, we choose to show the increasing amount of internet traffic. This growth has been significant in recent years, driven by the increasing number of people and devices accessing the internet, as well as the growing amount of data being transmitted for various purposes The sound is showing us the history of the internet by playing sounds from the very earliest times to the latest. Each light colour represents different sound groups for example notification, AI voice, etc. One can differentiate easily how internet traffic has changed and how much it was growing with time. ",
             "project02_tags": [ "Communication", "Design Thinking", "Unity"],
@@ -1436,8 +1435,7 @@
             "project03_contributors": "Colin Kavanagh, Andrea Paricio, Monika Uzelac",
             "project03_university_project": "Yes",
             "project03_media": [[ "img/davletshyn/davletshyn_project3.1.jpg", "image", ""],
-            [ "img/davletshyn/davletshyn_project3.2.jpg", "image" , "" ],
-            [ "", "image" , ""]
+            [ "img/davletshyn/davletshyn_project3.2.jpg", "image" , "" ]
             ],
             "project03_description": "“Flunky ball” it's a first-player perspective game developed in Unity for two or more people. It simulates a real flunky ball game. To start playing you will need your friend, phone, computer, and a can or two of beer. The point of the game is to drink your beer faster than your opponent. To start drinking first you must knock down a bottle of water that stands between you and another player. After you succeed, drink as much as possible, the task of your opponent is to pick up the bottle and return to its first place. Once they finish the task you should stop drinking immediately. You can complete the running action by moving your phone, to win the game you need to shake it as hard as possible and drink beer quickly. Now you can play Flunky ball with your friends from all over the world.",
             "project03_tags": [ "Communication", "Design Thinking", "Unity"],
