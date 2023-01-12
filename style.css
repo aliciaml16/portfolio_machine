@@ -1,6 +1,11 @@
 @font-face {
     font-family: Amiko;
-    src: url("fonts/Acumin Pro Light.otf");
+    src: url("fonts/Acumin-Pro-Light.otf");
+}
+
+@font-face {
+    font-family: Amiko_thin;
+    src: url("fonts/Acumin-Pro-ExtraLight.otf");
 }
 
 @font-face {
@@ -303,6 +308,7 @@ iframe {
 
 .middle_content h3 {
     padding-bottom: 7px;
+    font-family: Amiko_thin;
 }
 
 .top_content {
