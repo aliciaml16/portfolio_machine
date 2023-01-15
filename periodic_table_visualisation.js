@@ -197,6 +197,7 @@ var actualColor;
 
 // We open the profile
 function OpenProfile(json, id) {
+  content_container.innerHTML = arrows_sliders_content;
   id_int = parseInt(id);
   var elements = document.getElementsByClassName("element");
 
@@ -417,13 +418,7 @@ function DataProject01(json, id) {
         }
         event.target.classList.add("dynamic_border");
 
-        content_container.innerHTML = arrows_sliders_content;
-
-        var iframe = document.createElement("iframe");
-        iframe.src = json["people"][id]["project01_media"][event.target.id][0];
-        iframe.width = "100%";
-        iframe.height = "100%";
-        content_container.append(iframe);
+        content_container.innerHTML = arrows_sliders_content + "<video width='100%' height='100%' controls loop autoplay><source src='"+json["people"][id]["project01_media"][event.target.id][0]+"' type='video/mp4'></video>";
         
         UpdateDynamic(json, id);
       };
@@ -533,13 +528,7 @@ function DataProject02(json, id) {
         }
         event.target.classList.add("dynamic_border");
 
-        content_container.innerHTML = arrows_sliders_content;
-
-        var iframe = document.createElement("iframe");
-        iframe.src = json["people"][id]["project02_media"][event.target.id][0];
-        iframe.width = "100%";
-        iframe.height = "100%";
-        content_container.append(iframe);
+        content_container.innerHTML = arrows_sliders_content + "<video width='100%' height='100%' controls loop autoplay><source src='"+json["people"][id]["project02_media"][event.target.id][0]+"' type='video/mp4'></video>";
         
         UpdateDynamic(json, id);
       };
@@ -649,13 +638,7 @@ function DataProject03(json, id) {
         }
         event.target.classList.add("dynamic_border");
 
-        content_container.innerHTML = arrows_sliders_content;
-
-        var iframe = document.createElement("iframe");
-        iframe.src = json["people"][id]["project03_media"][event.target.id][0];
-        iframe.width = "100%";
-        iframe.height = "100%";
-        content_container.append(iframe);
+        content_container.innerHTML = arrows_sliders_content + "<video width='100%' height='100%' controls loop autoplay><source src='"+json["people"][id]["project03_media"][event.target.id][0]+"' type='video/mp4'></video>";
         
         UpdateDynamic(json, id);
       };
@@ -748,25 +731,22 @@ function SliderNext() {
   json = request.response
   for (i = 0 ; i < json["people"].length ; i++) {
     var image_container = document.getElementsByClassName("image_container");
-    var video_container = document.querySelectorAll("#content_container > iframe");
+    var video_container = document.querySelectorAll("#content_container > video");
+    var video_src = document.querySelectorAll("#content_container > video > source");
     if (image_container.length != 0) {
       var actualImage = image_container[0].style.backgroundImage;
       var sideImage = document.getElementsByClassName("side_image");
     }
     if (video_container.length != 0) {
-      var actualImage = video_container[0].src;
+      var actualImage = video_src[0].src;
       var sideImage = document.getElementsByClassName("side_image");
     }
+    console.log(actualImage);
     for (j = 0 ; j < json["people"][i]["project01_media"].length ; j++) {
       if (actualImage.includes(json["people"][i]["project01_media"][j][0])) {
         if (j == json["people"][i]["project01_media"].length - 1) {
           if (json["people"][i]["project01_media"][0][1].includes("video")) {
-            content_container.innerHTML = arrows_sliders_content;
-            var iframe = document.createElement("iframe");
-            iframe.src = json["people"][i]["project01_media"][0][0];
-            iframe.width = "100%";
-            iframe.height = "100%";
-            content_container.append(iframe);
+            content_container.innerHTML = arrows_sliders_content + "<video width='100%' height='100%' controls loop autoplay><source src='"+json["people"][i]["project01_media"][0][0]+"' type='video/mp4'></video>";
           } else {
             content_container.innerHTML = arrows_sliders_content;
             var img = document.createElement("div");
@@ -783,12 +763,7 @@ function SliderNext() {
           sideImage[0].style.borderColor = actualColor;
         } else {
           if (json["people"][i]["project01_media"][j+1][1].includes("video")) {
-            content_container.innerHTML = arrows_sliders_content;
-            var iframe = document.createElement("iframe");
-            iframe.src = json["people"][i]["project01_media"][j+1][0];
-            iframe.width = "100%";
-            iframe.height = "100%";
-            content_container.append(iframe);
+            content_container.innerHTML = arrows_sliders_content + "<video width='100%' height='100%' controls loop autoplay><source src='"+json["people"][i]["project01_media"][j + 1][0]+"' type='video/mp4'></video>";
           } else {
             content_container.innerHTML = arrows_sliders_content;
             var img = document.createElement("div");
@@ -810,12 +785,7 @@ function SliderNext() {
       if (actualImage.includes(json["people"][i]["project02_media"][j][0])) {
         if (j == json["people"][i]["project02_media"].length - 1) {
           if (json["people"][i]["project02_media"][0][1].includes("video")) {
-            content_container.innerHTML = arrows_sliders_content;
-            var iframe = document.createElement("iframe");
-            iframe.src = json["people"][i]["project02_media"][0][0];
-            iframe.width = "100%";
-            iframe.height = "100%";
-            content_container.append(iframe);
+            content_container.innerHTML = arrows_sliders_content + "<video width='100%' height='100%' controls loop autoplay><source src='"+json["people"][i]["project02_media"][0][0]+"' type='video/mp4'></video>";
           } else {
             content_container.innerHTML = arrows_sliders_content;
             var img = document.createElement("div");
@@ -832,12 +802,7 @@ function SliderNext() {
           sideImage[0].style.borderColor = actualColor;
         } else {
           if (json["people"][i]["project02_media"][j+1][1].includes("video")) {
-            content_container.innerHTML = arrows_sliders_content;
-            var iframe = document.createElement("iframe");
-            iframe.src = json["people"][i]["project02_media"][j+1][0];
-            iframe.width = "100%";
-            iframe.height = "100%";
-            content_container.append(iframe);
+            content_container.innerHTML = arrows_sliders_content + "<video width='100%' height='100%' controls loop autoplay><source src='"+json["people"][i]["project02_media"][j + 1][0]+"' type='video/mp4'></video>";
           } else {
             content_container.innerHTML = arrows_sliders_content;
             var img = document.createElement("div");
@@ -859,12 +824,7 @@ function SliderNext() {
       if (actualImage.includes(json["people"][i]["project03_media"][j][0])) {
         if (j == json["people"][i]["project03_media"].length - 1) {
           if (json["people"][i]["project03_media"][0][1].includes("video")) {
-            content_container.innerHTML = arrows_sliders_content;
-            var iframe = document.createElement("iframe");
-            iframe.src = json["people"][i]["project03_media"][0][0];
-            iframe.width = "100%";
-            iframe.height = "100%";
-            content_container.append(iframe);
+            content_container.innerHTML = arrows_sliders_content + "<video width='100%' height='100%' controls loop autoplay><source src='"+json["people"][i]["project03_media"][0][0]+"' type='video/mp4'></video>";
           } else {
             content_container.innerHTML = arrows_sliders_content;
             var img = document.createElement("div");
@@ -881,12 +841,7 @@ function SliderNext() {
           sideImage[0].style.borderColor = actualColor;
         } else {
           if (json["people"][i]["project03_media"][j+1][1].includes("video")) {
-            content_container.innerHTML = arrows_sliders_content;
-            var iframe = document.createElement("iframe");
-            iframe.src = json["people"][i]["project03_media"][j+1][0];
-            iframe.width = "100%";
-            iframe.height = "100%";
-            content_container.append(iframe);
+            content_container.innerHTML = arrows_sliders_content + "<video width='100%' height='100%' controls loop autoplay><source src='"+json["people"][i]["project03_media"][j + 1][0]+"' type='video/mp4'></video>";
           } else {
             content_container.innerHTML = arrows_sliders_content;
             var img = document.createElement("div");
@@ -911,25 +866,21 @@ function SliderPrev() {
   json = request.response
   for (i = 0 ; i < json["people"].length ; i++) {
     var image_container = document.getElementsByClassName("image_container");
-    var video_container = document.querySelectorAll("#content_container > iframe");
+    var video_container = document.querySelectorAll("#content_container > video");
+    var video_src = document.querySelectorAll("#content_container > video > source");
     if (image_container.length != 0) {
       var actualImage = image_container[0].style.backgroundImage;
       var sideImage = document.getElementsByClassName("side_image");
     }
     if (video_container.length != 0) {
-      var actualImage = video_container[0].src;
+      var actualImage = video_src[0].src;
       var sideImage = document.getElementsByClassName("side_image");
     }
     for (j = 0 ; j < json["people"][i]["project01_media"].length ; j++) {
       if (actualImage.includes(json["people"][i]["project01_media"][j][0])) {
         if (j == 0) {
           if (json["people"][i]["project01_media"][sideImage.length - 1][1].includes("video")) {
-            content_container.innerHTML = arrows_sliders_content;
-            var iframe = document.createElement("iframe");
-            iframe.src = json["people"][i]["project01_media"][sideImage.length - 1][0];
-            iframe.width = "100%";
-            iframe.height = "100%";
-            content_container.append(iframe);
+            content_container.innerHTML = arrows_sliders_content + "<video width='100%' height='100%' controls loop autoplay><source src='"+json["people"][i]["project01_media"][sideImage.length - 1][0]+"' type='video/mp4'></video>";
           } else {
             content_container.innerHTML = arrows_sliders_content;
             var img = document.createElement("div");
@@ -946,12 +897,7 @@ function SliderPrev() {
           sideImage[sideImage.length - 1].style.borderColor = actualColor;
         } else {
           if (json["people"][i]["project01_media"][j-1][1].includes("video")) {
-            content_container.innerHTML = arrows_sliders_content;
-            var iframe = document.createElement("iframe");
-            iframe.src = json["people"][i]["project01_media"][j-1][0];
-            iframe.width = "100%";
-            iframe.height = "100%";
-            content_container.append(iframe);
+            content_container.innerHTML = arrows_sliders_content + "<video width='100%' height='100%' controls loop autoplay><source src='"+json["people"][i]["project01_media"][j - 1][0]+"' type='video/mp4'></video>";
           } else {
             content_container.innerHTML = arrows_sliders_content;
             var img = document.createElement("div");
@@ -973,12 +919,7 @@ function SliderPrev() {
       if (actualImage.includes(json["people"][i]["project02_media"][j][0])) {
         if (j == 0) {
           if (json["people"][i]["project02_media"][sideImage.length - 1][1].includes("video")) {
-            content_container.innerHTML = arrows_sliders_content;
-            var iframe = document.createElement("iframe");
-            iframe.src = json["people"][i]["project02_media"][sideImage.length - 1][0];
-            iframe.width = "100%";
-            iframe.height = "100%";
-            content_container.append(iframe);
+            content_container.innerHTML = arrows_sliders_content + "<video width='100%' height='100%' controls loop autoplay><source src='"+json["people"][i]["project02_media"][sideImage.length - 1][0]+"' type='video/mp4'></video>";
           } else {
             content_container.innerHTML = arrows_sliders_content;
             var img = document.createElement("div");
@@ -995,12 +936,7 @@ function SliderPrev() {
           sideImage[sideImage.length - 1].style.borderColor = actualColor;
         } else {
           if (json["people"][i]["project02_media"][j-1][1].includes("video")) {
-            content_container.innerHTML = arrows_sliders_content;
-            var iframe = document.createElement("iframe");
-            iframe.src = json["people"][i]["project02_media"][j-1][0];
-            iframe.width = "100%";
-            iframe.height = "100%";
-            content_container.append(iframe);
+            content_container.innerHTML = arrows_sliders_content + "<video width='100%' height='100%' controls loop autoplay><source src='"+json["people"][i]["project02_media"][j - 1][0]+"' type='video/mp4'></video>";
           } else {
             content_container.innerHTML = arrows_sliders_content;
             var img = document.createElement("div");
@@ -1022,12 +958,7 @@ function SliderPrev() {
       if (actualImage.includes(json["people"][i]["project03_media"][j][0])) {
         if (j == 0) {
           if (json["people"][i]["project03_media"][sideImage.length - 1][1].includes("video")) {
-            content_container.innerHTML = arrows_sliders_content;
-            var iframe = document.createElement("iframe");
-            iframe.src = json["people"][i]["project03_media"][sideImage.length - 1][0];
-            iframe.width = "100%";
-            iframe.height = "100%";
-            content_container.append(iframe);
+            content_container.innerHTML = arrows_sliders_content + "<video width='100%' height='100%' controls loop autoplay><source src='"+json["people"][i]["project03_media"][sideImage.length - 1][0]+"' type='video/mp4'></video>";
           } else {
             content_container.innerHTML = arrows_sliders_content;
             var img = document.createElement("div");
@@ -1044,12 +975,7 @@ function SliderPrev() {
           sideImage[sideImage.length - 1].style.borderColor = actualColor;
         } else {
           if (json["people"][i]["project03_media"][j-1][1].includes("video")) {
-            content_container.innerHTML = arrows_sliders_content;
-            var iframe = document.createElement("iframe");
-            iframe.src = json["people"][i]["project03_media"][j-1][0];
-            iframe.width = "100%";
-            iframe.height = "100%";
-            content_container.append(iframe);
+            content_container.innerHTML = arrows_sliders_content + "<video width='100%' height='100%' controls loop autoplay><source src='"+json["people"][i]["project03_media"][j - 1][0]+"' type='video/mp4'></video>";
           } else {
             content_container.innerHTML = arrows_sliders_content;
             var img = document.createElement("div");
@@ -1282,6 +1208,8 @@ function BackProfile() {
   screen02.style.opacity = 1;
   screen02.style.zIndex = 1;
 
+  content_container.innerHTML = arrows_sliders_content;
+
   for (i = 0; i < elements.length; i++) {
     if (elements[i].classList.contains("main_element_next_hide")) {
       elements[i].classList.add("main_element_next");
@@ -1301,6 +1229,8 @@ function BackPeriodTable() {
   screen02.style.zIndex = -1;
   screen03.style.opacity = 0;
   screen03.style.zIndex = -1;
+
+  content_container.innerHTML = arrows_sliders_content;
 
   element_counter = 0;
   row = 0;
